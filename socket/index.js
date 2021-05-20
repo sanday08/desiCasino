@@ -149,7 +149,7 @@ setInterval(async () => {
   if (new Date().getMinutes() == 1) {
     let p = await getAdminPer();
 
-    adminPer = p.percent;
+    adminPer = parseInt(p.percent);
   }
 
   //}

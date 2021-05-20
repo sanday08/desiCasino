@@ -16,7 +16,7 @@ async function placeBet(retailerId, game, position, betPoint, adminPer) {
         userName: user.userName,
         position,
         name: user.name,
-        adminPer: (betPoint * (100 - adminPer)) / 100,
+        adminCommissions: (betPoint * (100 - adminPer)) / 100,
         superDistributerCommission:
           (betPoint * superDistributer.commissionPercentage) / 100,
         retailerCommission: (betPoint * user.commissionPercentage) / 100,
