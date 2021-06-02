@@ -2,12 +2,16 @@ const User = require("../../models/User");
 const Bet = require("../../models/Bet");
 const WinResult = require("../../models/WinResult");
 const Winning = require("../../models/Winning");
+const Subper = require("../../models/Subper");
 async function placeBet(retailerId, game, position, betPoint, adminPer) {
   //Verify Token
   try {
+
     let user = await User.findById(retailerId);
     const superDistributer = await User.findById(user.referralId);
     if (user.creditPoint >= betPoint) {
+      let subAdminPer = await Subper.findById("60b74f37118f094eaa3709c2");
+      subAdminPer = subAdminPer.percent;
       bet = await Bet.create({
         retailerId,
         game,
@@ -34,6 +38,12 @@ async function placeBet(retailerId, game, position, betPoint, adminPer) {
             (betPoint * superDistributer.commissionPercentage) / 100,
         },
       });
+      await User.find({ role: "subAdmin" }, {
+        $inc: {
+          commissionPoint:
+            (betPoint * subAdminPer) / 100,
+        },
+      })
       return bet._id;
     }
     return 0;

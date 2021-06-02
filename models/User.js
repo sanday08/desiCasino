@@ -23,7 +23,7 @@ const UserSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ["retailer", "superDistributer", "Admin"], //if you write admin than its display error "`admin` is not a valid enum value for path `role`".
+      enum: ["retailer", "superDistributer", "subAdmin", "Admin"], //if you write admin than its display error "`admin` is not a valid enum value for path `role`".
       default: "retailer",
     },
     userName: {
