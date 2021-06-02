@@ -30,7 +30,7 @@ let retailers = {};
 //TransactionId
 let transactions = {};
 
-let adminPer = 90;
+let adminPer = 50;
 io.on("connection", (socket) => {
   //Join Event When Application is Start
   socket.on("join", async ({ token, gameName }) => {
