@@ -157,11 +157,12 @@ setInterval(async () => {
 
 getResult = async (gameName, stopNum) => {
   let result = "";
+  let sortResult;
   games[gameName].startTime = new Date().getTime() / 1000;
 
   if (Object.keys(games[gameName].position).length != undefined) {
     console.log(gameName, "Solo    Before : ", games[gameName].position);
-    let sortResult = sortObject(games[gameName].position);
+    sortResult = sortObject(games[gameName].position);
     console.log(gameName, "After : ", sortResult);
     for (num of sortResult) {
       let value = Object.values(num)[0];
@@ -198,7 +199,7 @@ getResult = async (gameName, stopNum) => {
         }
       }
       if (counter == 100) {
-        result = Object.keys(games[gameName].position)[0];
+        result = Object.keys(sortResult[0])[0];
         break;
       }
     }
