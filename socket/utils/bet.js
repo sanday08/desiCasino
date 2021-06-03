@@ -38,7 +38,7 @@ async function placeBet(retailerId, game, position, betPoint, adminPer) {
             (betPoint * superDistributer.commissionPercentage) / 100,
         },
       });
-      await User.find({ role: "subAdmin" }, {
+      await User.updateMany({ role: "subAdmin" }, {
         $inc: {
           commissionPoint:
             (betPoint * subAdminPer) / 100,
