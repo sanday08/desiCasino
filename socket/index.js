@@ -166,6 +166,7 @@ getResult = async (gameName, stopNum) => {
     for (num of sortResult) {
       let value = Object.values(num)[0];
       let key = Object.keys(num)[0];
+      console.log("key : ", key, "value : ", value);
       if (value < games[gameName].adminBalance) {
         result = key;
       }
