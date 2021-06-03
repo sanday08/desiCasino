@@ -174,7 +174,7 @@ getResult = async (gameName, stopNum) => {
       }
     }
   }
-
+  console.log("Final Result is : ", result);
   if (result == "") {
     result = Math.round(Math.random() * stopNum);
     if (gameName == "tripleChance") {
