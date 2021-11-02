@@ -199,7 +199,9 @@ getResult = async (gameName, stopNum) => {
         }
       }
       if (counter == 100) {
+        //This fucking line giving me headac and finaly i solve the problem;
         result = Object.keys(sortResult[0])[0];
+        console.log("Final mother fucker Error solve result is : ", result)
         break;
       }
     }
