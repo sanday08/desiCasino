@@ -121,7 +121,7 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     socket.leave(users[socket.id]);
     delete users[socket.id];
-    for (userId in retailers) {
+    for (let userId in retailers) {
       if (retailers[userId] == socket.id) delete retailers[userId];
     }
   });
@@ -164,7 +164,7 @@ getResult = async (gameName, stopNum) => {
     console.log(gameName, "Solo    Before : ", games[gameName].position);
     sortResult = sortObject(games[gameName].position);
     console.log(gameName, "After : ", sortResult);
-    for (num of sortResult) {
+    for (let num of sortResult) {
       let value = Object.values(num)[0];
       let key = Object.keys(num)[0];
       console.log("key : ", key, "value : ", value, " adminBalanced", games[gameName].adminBalance);
@@ -281,8 +281,8 @@ flushAll = (gameName) => {
 };
 
 playCasino = (gameName, position, result) => {
-  for (pos of position) {
-    for (num of pos[Object.keys(pos)[0]]) {
+  for (let pos of position) {
+    for (let num of pos[Object.keys(pos)[0]]) {
       let wonAmount = (pos.amount * 36) / pos[Object.keys(pos)[0]].length;
       games[gameName].position = immutable.update(
         games[gameName].position,
@@ -301,11 +301,11 @@ playCasino = (gameName, position, result) => {
 };
 
 playTripleChance = (position, result) => {
-  for (pos in position) {
+  for (let pos in position) {
     let num = pos;
     if (pos.length == 1) {
-      for (i = 0; i < 10; i++) {
-        for (j = 0; j < 10; j++) {
+      for (let i = 0; i < 10; i++) {
+        for (let j = 0; j < 10; j++) {
           num = i.toString() + j.toString() + pos;
           games.tripleChance.position = immutable.update(
             games.tripleChance.position,
@@ -320,7 +320,7 @@ playTripleChance = (position, result) => {
         }
       }
     } else if (pos.length == 2) {
-      for (i = 0; i < 10; i++) {
+      for (let i = 0; i < 10; i++) {
         num = i.toString() + pos;
         games.tripleChance.position = immutable.update(
           games.tripleChance.position,
