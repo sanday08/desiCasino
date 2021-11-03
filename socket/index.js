@@ -157,6 +157,7 @@ setInterval(async () => {
 
 getResult = async (gameName, stopNum) => {
   let result = "";
+  let resultArray = [];
   let sortResult;
   games[gameName].startTime = new Date().getTime() / 1000;
 
@@ -169,7 +170,10 @@ getResult = async (gameName, stopNum) => {
       let key = Object.keys(num)[0];
       console.log("key : ", key, "value : ", value, " adminBalanced", games[gameName].adminBalance);
       if (value < games[gameName].adminBalance) {
-        result = key;
+        if (games[gameName].position[result] != games[gameName].position[key])
+          resultArray = [];
+        resultArray.push(key);
+        result = resultArray[Math.floor(Math.random() * resultArray.length)];
       }
       if (value > games[gameName].adminBalance) {
         break;
